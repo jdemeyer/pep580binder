@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -e
+
+git clone https://github.com/jdemeyer/cpython.git
+cd cpython
+git checkout pep580
+./configure --prefix=$(python3 -c 'import os, sys; print(os.path.realpath(sys.prefix))')
+make
+make install
+
+pip3 install cython jupyterlab
